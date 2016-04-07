@@ -1,0 +1,96 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  name: "四角號碼檢字法"
+  schema_id: four_corner_method
+  version: 0.1
+  author:
+    - "發明人 王雲五"
+  dependencies:
+    - luna_pinyin
+  description: |
+    碼表自瑾昀得，雪齋整理製作
+    以「qwertyuiop」卽第一排字母表示四角號碼「1234567890」
+    顯示字的Unicode編碼，格式爲〖U+xxxx〗
+ 
+switches:
+  - name: ascii_mode
+    reset: 0
+    states:
+      - "中文"
+      - "西文"
+  - name: full_shape
+    reset: 1
+    states:
+      - "半角"
+      - "全角"
+ 
+engine:
+  filters:
+    - simplifier
+    - uniquifier
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - table_translator
+
+speller:
+  alphabet: qwertyuiop
+  delimiter: " ' "
+
+recognizer:
+  import_preset: default
+  patterns:
+    email: "^[a-z][-_.0-9a-z]*@.*$"
+    uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp:|mailto:).*$"
+    reverse_lookup: "`[a-z]*'?$"
+
+# 不須「U+」提示者，刪去以下兩項「#」符號卽可
+
+translator:
+  comment_format:
+    - xform/~?;([0-9A-F]+)$/〖U+$1〗/
+    - "xlit|qwertyuiop~|1234567890〜|"
+#    - xform/U\+//
+  dictionary: four_corner_method
+  enable_charset_filter: false
+  preedit_format:
+    - "xlit|qwertyuiop|1234567890|"
+  spelling_hint: 20
+ 
+reverse_lookup:
+  comment_format:
+    - xform/;([0-9A-F]+)$/〖U+$1〗/
+    - "xlit|qwertyuiop|1234567890|"
+#    - xform/U\+//
+  dictionary: luna_pinyin
+  preedit_format:
+    - "xform/([nl])v/$1ü/"
+    - "xform/([nl])ue/$1üe/"
+    - "xform/([jqxy])v/$1u/"
+  prefix: "`"
+  suffix: "'"
+  tips: "【拼音】"
+ 
+key_binder:
+  import_preset: default
+
+punctuator:
+  import_preset: default

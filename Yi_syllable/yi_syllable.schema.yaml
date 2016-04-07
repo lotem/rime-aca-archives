@@ -1,0 +1,57 @@
+﻿# Rime schema settings
+# encoding: utf-8
+
+schema:
+  schema_id: yi_syllable
+  name: "涼山彝文"
+  version: "1.0"
+  author:
+    - Lely <fourseasons4ji@gmail.com>
+  description: |
+    規範彝文，目前尚未有詞庫，一級簡碼及部首同微軟彝文輸入法，部首用讀音加b來輸入。
+    如有問題，歡迎與作者聯繫。
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 彝文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+
+engine:
+  processors:
+    - ascii_composer
+#    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator
+
+speller:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  delimiter: " '"
+  algebra:
+    - abbrev/^([a-z]).+$/$1/
+
+translator:
+  dictionary: yi_syllable
+  enable_charset_filter: false
+  enable_user_dict: false
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+

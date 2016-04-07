@@ -1,0 +1,48 @@
+﻿# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+  schema_id: unicode
+  name: "萬國碼"
+  version: "7.0"
+  author:
+    - Lely<fourseasons4ji@gmail.com>
+  description: 萬國碼（Unicode）輸入，含蓋萬國碼的基礎平面（BMP）、第一擴展平面（SP1）和第二擴展平面（SP2）。
+
+engine:
+  processors:
+    - ascii_composer
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - abc_segmentor
+    - fallback_segmentor
+  translators:
+    - table_translator
+
+menu:
+  alternative_select_keys: "!@#$%^&*("
+  page_size: 9
+
+speller:
+  alphabet: abcdef0123456789
+  delimiter: " '"
+  auto_select: true
+
+translator:
+  dictionary: unicode
+  preedit_format:
+    - xform/a/A/
+    - xform/b/B/
+    - xform/c/C/
+    - xform/d/D/
+    - xform/e/E/
+    - xform/f/F/
+
+key_binder:
+  import_preset: default

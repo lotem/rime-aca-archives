@@ -1,0 +1,103 @@
+﻿# Rime schema
+# Dvorak
+# encoding: utf-8
+
+schema:
+  schema_id: dvorak_right
+  name: "Dvorak (right-handed)"
+  version: "1.0"
+  author:
+    - Lely <fourseasons4ji@gmail.com>
+  description: "Dvorak鍵盤佈局 慣用右手"
+
+engine:
+  processors:
+    - punctuator
+    - express_editor
+  segmentors:
+    - punct_segmentor
+  translators:
+    - punct_translator
+
+punctuator:
+  half_shape: &symtable
+    "q" : 5
+    "Q" : "%"
+    "w" : 6
+    "W" : "^"
+    "e" : q
+    "E" : Q
+    "r" : "."
+    "R" : ">"
+    "t" : o
+    "T" : O
+    "y" : r
+    "Y" : R
+    "u" : s
+    "U" : S
+    "i" : u
+    "I" : U
+    "o" : y
+    "O" : Y
+    "p" : b
+    "P" : B
+    "[" : ";"
+    "{" : ":"
+    "]" : "="
+    "}" : "+"
+    "a" : 7
+    "A" : "&"
+    "s" : 8
+    "S" : "*"
+    "d" : z
+    "D" : Z
+    "f" : a
+    "F" : A
+    "g" : e
+    "G" : E
+    "j" : t
+    "J" : T
+    "k" : d
+    "K" : D
+    "l" : c
+    "L" : C
+    ";" : k
+    ":" : K
+    "'" : "-"
+    "\"" : _
+    "z" : 9
+    "Z" : "("
+    "x" : 0
+    "X" : ")"
+    "c" : x
+    "C" : X
+    "v" : ","
+    "V" : "<"
+    "b" : i
+    "B" : I
+    "m" : w
+    "M" : W
+    "," : v
+    "<" : V
+    "." : g
+    ">" : G
+    "/" : "'"
+    "?" : "\""
+    "5" : j
+    "%" : J
+    "6" : l
+    "^" : L
+    "7" : m
+    "&" : M
+    "8" : f
+    "*" : F
+    "9" : p
+    "(" : P
+    "0" : "/"
+    ")" : "?"
+    "-" : "["
+    "_" : "{"
+    "=" : "]"
+    "+" : "}"
+
+  full_shape: *symtable

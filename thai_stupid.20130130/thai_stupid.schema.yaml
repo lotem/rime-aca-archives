@@ -1,0 +1,47 @@
+﻿# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+  schema_id: thai_stupid
+  name: "泰文笨"
+  version: "poly2013.01.30"
+  author:
+    - polyhedron<biopolyhedron@gmail.com>
+  description: 
+    - 泰文輸入法，詳見.dict.yaml
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 泰文, 西文 ]
+
+engine:
+  processors:
+    - ascii_composer
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - abc_segmentor
+    - fallback_segmentor
+  translators:
+    - table_translator
+
+menu:
+  alternative_select_keys: "ACFHIJMNP"
+
+speller:
+  alphabet: "abcdefghijklmnopqrstuvwxyz1234567890BDEKGLORVTZY?.,$`'^+"
+  delimiter: ' '
+  algebra:
+    - derive/,$//
+
+translator:
+  dictionary: thai_stupid
+
+key_binder:
+  import_preset: default

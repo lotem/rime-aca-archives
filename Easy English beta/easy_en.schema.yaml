@@ -1,0 +1,62 @@
+﻿# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+  schema_id: easy_en
+  name: Easy English ₀.₂
+  version: "0.2"
+  author:
+    - Patrick <ipatrickmac@gmail.com>
+  description:
+    Easy English
+  dependencies:
+    - eng_cmn
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ On, Off ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+    #- fluency_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - table_translator
+    - punct_translator
+    - r10n_translator
+    - reverse_lookup_translator
+  filters:
+    - uniquifier
+
+speller:
+  alphabet: 'ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba`~!@#$%^&*-_=+()[]{}\|;:''",<.>/? '
+  delimiter: " "
+
+translator:
+  dictionary: easy_en
+  spelling_hints: 9
+  prism: easy_en
+
+reverse_lookup:
+  dictionary: eng_cmn
+  enable_completion: true
+  prefix: "`"
+  suffix: " '"
+  tips: 〔English - Chinese〕
+  preedit_format:
+    - "xlit|ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba|"

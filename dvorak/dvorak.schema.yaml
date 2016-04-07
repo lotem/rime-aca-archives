@@ -1,0 +1,91 @@
+﻿# Rime schema
+# Dvorak
+# encoding: utf-8
+
+schema:
+  schema_id: dvorak
+  name: "Dvorak"
+  version: "1.0"
+  author:
+    - Lely <fourseasons4ji@gmail.com>
+  description: "Dvorak鍵盤佈局"
+
+engine:
+  processors:
+    - punctuator
+    - express_editor
+  segmentors:
+    - punct_segmentor
+  translators:
+    - punct_translator
+
+punctuator:
+  half_shape: &symtable
+    "q" : "'"
+    "Q" : "\""
+    "w" : ","
+    "W" : "<"
+    "e" : "."
+    "E" : ">"
+    "r" : p
+    "R" : P
+    "t" : y
+    "T" : Y
+    "y" : f
+    "Y" : F
+    "u" : g
+    "U" : G
+    "i" : c
+    "I" : C
+    "o" : r
+    "O" : R
+    "p" : l
+    "P" : L
+    "-" : "["
+    "_" : "{"
+    "=" : "]"
+    "+" : "}"
+    "[" : "/"
+    "{" : "?"
+    "]" : "="
+    "}" : "+"
+    "s" : o
+    "S" : O
+    "d" : e
+    "D" : E
+    "f" : u
+    "F" : U
+    "g" : i
+    "G" : I
+    "h" : d
+    "H" : D
+    "j" : h
+    "J" : H
+    "k" : t
+    "K" : T
+    "l" : n
+    "L" : N
+    ";" : s
+    ":" : S
+    "'" : "-"
+    "\"" : _
+    "z" : ;
+    "Z" : ":"
+    "x" : q
+    "X" : Q
+    "c" : j
+    "C" : J
+    "v" : k
+    "V" : K
+    "b" : x
+    "B" : X
+    "n" : b
+    "N" : B
+    "," : w
+    "<" : W
+    "." : v
+    ">" : V
+    "/" : z
+    "?" : Z
+
+  full_shape: *symtable
